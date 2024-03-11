@@ -64,6 +64,6 @@ let sample = '99';
 
 console.log(+sample);
 console.log(typeof +sample);
-
+        
 console.log(sample);
 console.log(typeof sample);
