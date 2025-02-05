@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+    
+</head>
+<body>
+    <div class="parent">
+        <ul class="children_list">
+            <li>첫째</li>
+            <li>둘째</li>
+            <li>셋째</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    console.log($('.children_list'));
+    console.log($('.children_list li'));
+
+    // 자식 요소
+    console.log($('.parent').children());
+    
+    // 선택한 요소의 자식요소 중 지정한 엘리먼트를 모두 찾음
+    console.log($('.children_list').find('li')); 
+
+</script>

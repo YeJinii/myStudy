@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        console.log($);
+    </script>
+</head>
+<body>
+    <script>
+        window.onload = function() {
+            console.log('load');
+        }
+        $(document).ready(function() {
+            console.log('ready');
+        })
+        $(function(){ // 상위의 document ready와 동일
+
+        })
+    </script>
+</body>
+</html>
