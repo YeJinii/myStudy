@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그라데이션 텍스트</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .gradient-text {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff7eb3, #cc0123, #85ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="gradient-text">그라데이션 텍스트</h1>
+</body>
+</html>

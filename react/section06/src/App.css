@@ -1,0 +1,33 @@
+body {
+    padding: 20px;
+}
+
+.App {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.App > section {
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.btnWrap {
+    display: flex;
+    gap: 4px;
+}
+.btnWrap button {
+    border: none;
+    background-color: rgb(224, 224, 224);
+    border-radius: 4px;
+    padding: 4px 10px;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btnWrap button:hover {
+    background-color: rgb(255, 191, 191);
+}
