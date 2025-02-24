@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
-    font-family: "Sour Gummy", "Gamja Flower", serif;
+    font-family: "Nanum Gothic", serif;
     font-optical-sizing: auto;
 }
 .App {
@@ -9,5 +9,5 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 4px;
 }

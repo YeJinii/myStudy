@@ -5,18 +5,19 @@
 
 .Editor input {
     flex: 1;
-    padding: 15px;
-    border: 1px solid #252525;
+    padding: 8px;
+    border: 1px solid rgba(0,0,0,.2); /* 0.5는 50% 투명도 */
     border-radius: 5px;
-    font-size: 18px;
+}
+.Editor input:focus {
+    border: 1px solid #d12d0c !important;
 }
 
 .Editor button {
     cursor: pointer;
     width: 80px;
     border: none;
-    background-color: #252525;
+    background-color: #d12d0c;
     color: white;
     border-radius: 5px;
-    font-size: 18px;
 }
