@@ -1,0 +1,51 @@
+.List {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.List h4 {
+    color: #222;
+    font-family: "Sour Gummy", serif;
+    font-size: 20px;
+    margin: 40px 0 0 0;
+}
+
+.List > input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    padding: 8px 0px;
+
+}
+.List > input:focus {
+    outline: none;
+    border-bottom: 1px solid #d12d0c;
+}
+
+.List .todos_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.List .status_board {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+    font-family: "Sour Gummy", serif;
+    color: #555;
+}
+
+.List .status_board .value {
+    font-weight: 600;
+}
+.List .status_board .value.total {
+    color: #333;
+}
+.List .status_board .value.done {
+    color: #2138ff;
+}
+.List .status_board .value.not_done{
+    color: #d12d0c;
+}
