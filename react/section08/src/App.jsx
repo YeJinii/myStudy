@@ -55,14 +55,14 @@ function App() {
 
     const onDelete = (targetId) => {
         // 인수 : todos 배열에서 targetId === id 를 갖는 요소만 삭제한 새로운 배열
-        setTodos(todos.filter((todo)=>{todo.id !== targetId}))
+        setTodos(todos.filter((todo) => todo.id !== targetId));
     }
 
     return (
         <div className='App'>
             <Header />
             <Editor onCreate = {onCreate} />
-            <List todos = {todos} onUpdate = {onUpdate} />
+            <List todos = {todos} onUpdate = {onUpdate} onDelete={onDelete}/>
         </div>
     );
 }
