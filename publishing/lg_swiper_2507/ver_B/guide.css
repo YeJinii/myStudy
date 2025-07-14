@@ -1,0 +1,193 @@
+body {
+    background-color: #E6E1D6;
+}
+.guide-wrap {
+    margin: 0 auto;
+    max-width: 90rem;
+    min-width: 1440px;
+    padding: 120px 0;
+}
+.guide-wrap h2 {
+    font-size: 48px;
+    font-family: 'LGEIHeadline';
+    font-weight: 700;
+    text-align: center;
+}
+.guide-wrap .tab-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    border-bottom: 1px solid #CBC8C3;
+}
+.guide-wrap .tab-item {
+    width: 20%;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'LGEIHeadline';
+    font-weight: 400;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+.guide-wrap .tab-item:hover {
+    opacity: 1;
+}
+.guide-wrap .tab-item.active {
+    opacity: 1;
+}
+.guide-wrap .tab-item:hover::after,
+.guide-wrap .tab-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 4px;
+    background-color: #D8362A;
+}
+.guide-wrap .tab-content-container {
+    padding: 120px 0;
+}
+.guide-wrap .tab-content-container h3 {
+    font-size: 36px;
+    font-weight: 300;
+    text-align: center;
+}
+.guide-wrap .tab-content {
+    display: none;
+}
+.guide-wrap .tab-content.active {
+    display: block;
+}
+
+.guide-wrap .swiper-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 636px;
+    margin-top: 50px;
+    padding: 0 100px;
+    background-color: #F0ECE5;
+    border-radius: 40px;
+}
+
+.guide-wrap .swiper-wrap .left-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.guide-wrap .swiper-wrap .left-nav .nav-button {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 304px;
+    position: relative;
+    gap: 12px;
+    padding: 16px 20px;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 21px;
+    text-align: left;
+    background-color: rgba(80, 58, 21, .06);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.guide-wrap .swiper-wrap .left-nav .nav-button .nav-num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #A9A49C;
+    line-height: 42px;
+    background-color: #F8F8F8;
+    border-radius: 50%;
+}
+.guide-wrap .swiper-wrap .left-nav .nav-button:hover,
+.guide-wrap .swiper-wrap .left-nav .nav-button.active {
+    background-color: #D8362A;
+    color: white;
+}
+.guide-wrap .swiper-wrap .left-nav .nav-button:hover .nav-num,
+.guide-wrap .swiper-wrap .left-nav .nav-button.active .nav-num {
+    background-color: #ffffff;
+    color: #D8362A;
+}
+.guide-wrap .swiper-wrap .left-nav .nav-button .checked {
+    display: none;
+    position: absolute;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    background: url('./imgs/check_icon.svg') no-repeat center/contain;
+}
+.guide-wrap .swiper-wrap .left-nav .nav-button:hover .checked,
+.guide-wrap .swiper-wrap .left-nav .nav-button.active .checked {
+    display: block;
+}
+.guide-wrap .swiper-wrap .divider-line {
+    width: 1px;
+    align-self: stretch;
+    margin: 0 100px 0 80px;
+    background-color: rgba(0,0,0,.1);
+}
+.guide-wrap .swiper-wrap .right-swiper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 864px;
+    align-self: stretch;
+    overflow: hidden;
+}
+.guide-wrap .swiper-wrap .right-swiper .swiper-container {
+    width: 100%;
+}
+.guide-wrap .swiper-wrap .right-swiper .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.guide-wrap .swiper-wrap .right-swiper .swiper-slide .text-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 338px;
+    gap: 24px;
+}
+.swiper-slide .text-wrap .step {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    opacity: .6;
+}
+.swiper-slide .text-wrap h4 {
+    font-size: 32px;
+    display: inline-block;
+    width: fit-content;
+}
+.swiper-slide .text-wrap p {
+    font-size: 18px;
+    line-height: 22px;
+}
+.swiper-slide .text-wrap .refer {
+    font-size: 16px;
+    line-height: 20px;
+    color: #6f6f6f;
+}
+.swiper-slide .img-wrap {
+    width: 300px;
+}
+.swiper-slide .img-wrap img {
+    display: block;
+    width: 100%;
+}

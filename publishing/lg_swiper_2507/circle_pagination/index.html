@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiper 커스텀 페이지네이션 (연결선 간격 개선)</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            padding-top: 60px;
+            box-sizing: border-box;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 300px;
+            padding-bottom: 20px;
+        }
+
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        h3 {
+            color: #555;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .step-circle-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+        }
+
+        .step-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+            position: relative;
+            z-index: 2;
+            transition: background-color 0.3s ease;
+        }
+
+        .step-circle.active {
+            background-color: #dc3545;
+        }
+
+        .step-circle.passed {
+            background-color: #dc3545;
+        }
+
+        .step-circle-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid #e0e0e0; /* 기본 색상을 #e0e0e0으로 설정 */
+            box-sizing: border-box;
+            z-index: 1;
+            transition: border-color 0.3s ease;
+        }
+
+        /* 활성화되거나 지나간 스텝일 때 테두리 색상 적용 */
+        .step-item:has(.step-circle.active) .step-circle-wrapper::before,
+        .step-item:has(.step-circle.passed) .step-circle-wrapper::before {
+            border-color: #dc3545;
+        }
+
+        .step-line-container {
+            display: flex;
+            height: 2px;
+            width: 20px;
+            position: relative;
+            z-index: 0;
+            overflow: hidden;
+            background-color: #e0e0e0;
+            border-radius: 1px;
+        }
+
+        .step-line-segment {
+            height: 100%;
+            background-color: #dc3545;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* 뒤로 이동 시 트랜지션 비활성화를 위한 클래스 */
+        .no-transition * {
+            transition: none !important;
+        }
+
+        .step-item:last-child .step-line-container {
+            display: none;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #555 !important;
+            transition: opacity 0.3s ease;
+        }
+
+        .swiper-button-disabled {
+            opacity: 0 !important;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="step-number"></div>
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><h2>STEP 1</h2><h3>첫 번째 제목</h3><p>첫 번째 스텝의 내용입니다.</p></div>
+                <div class="swiper-slide"><h2>STEP 2</h2><h3>두 번째 제목</h3><p>두 번째 스텝의 내용입니다.</p></div>
+                <div class="swiper-slide"><h2>STEP 3</h2><h3>세 번째 제목</h3><p>세 번째 제목의 내용입니다.</p></div>
+                <div class="swiper-slide"><h2>STEP 4</h2><h3>네 번째 제목</h3><p>네 번째 제목의 내용입니다.</p></div>
+                <div class="swiper-slide"><h2>STEP 5</h2><h3>다섯 번째 제목</h3><p>다섯 번째 제목의 내용입니다.</p></div>
+                <div class="swiper-slide"><h2>STEP 6</h2><h3>여섯 번째 제목</h3><p>여섯 번째 제목의 내용입니다.</p></div>
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalSlides = document.querySelectorAll('.swiper-slide').length;
+            const stepNumberContainer = document.querySelector('.step-number');
+            let lastActiveIndex = 0; // 이전 활성화된 인덱스를 저장
+
+            // 페이지네이션 요소 동적 생성 (기존과 동일)
+            for (let i = 1; i <= totalSlides; i++) {
+                const stepItem = document.createElement('div');
+                stepItem.classList.add('step-item');
+                stepItem.dataset.slideIndex = i - 1;
+
+                const stepCircleWrapper = document.createElement('div');
+                stepCircleWrapper.classList.add('step-circle-wrapper');
+
+                const stepCircle = document.createElement('div');
+                stepCircle.classList.add('step-circle');
+                stepCircle.textContent = i;
+
+                stepCircleWrapper.appendChild(stepCircle);
+                stepItem.appendChild(stepCircleWrapper);
+
+                if (i < totalSlides) {
+                    const stepLineContainer = document.createElement('div');
+                    stepLineContainer.classList.add('step-line-container');
+                    const lineSegment = document.createElement('div');
+                    lineSegment.classList.add('step-line-segment');
+                    stepLineContainer.appendChild(lineSegment);
+                    stepItem.appendChild(stepLineContainer);
+                }
+                stepNumberContainer.appendChild(stepItem);
+            }
+
+            // Swiper 초기화
+            const swiper = new Swiper('.swiper-container', {
+                loop: false,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                on: {
+                    slideChange: function () {
+                        updatePagination(this.realIndex, lastActiveIndex); // 이전 인덱스 전달
+                        lastActiveIndex = this.realIndex; // 현재 인덱스를 이전 인덱스로 저장
+                    }
+                }
+            });
+
+            // 페이지네이션 클릭 이벤트
+            const stepItems = document.querySelectorAll('.step-item');
+            stepItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.dataset.slideIndex);
+                    swiper.slideTo(slideIndex);
+                });
+            });
+
+            /**
+             * 현재 활성화된 슬라이드 인덱스에 따라 페이지네이션 상태를 업데이트하는 함수
+             * 순차적인 색칠을 위해 setTimeout을 사용합니다.
+             * @param {number} currentActiveIndex - 현재 활성화된 슬라이드의 인덱스
+             * @param {number} previousActiveIndex - 이전에 활성화되었던 슬라이드의 인덱스
+             */
+            function updatePagination(currentActiveIndex, previousActiveIndex) {
+                const stepItems = document.querySelectorAll('.step-item');
+                const isMovingForward = currentActiveIndex > previousActiveIndex;
+                const paginationContainer = document.querySelector('.step-number');
+
+                // 뒤로 갈 때는 no-transition 클래스 추가, 앞으로 갈 때는 제거
+                if (!isMovingForward) {
+                    paginationContainer.classList.add('no-transition');
+                } else {
+                    paginationContainer.classList.remove('no-transition');
+                }
+
+                // 모든 스텝 초기화 (이전 애니메이션 잔상 제거)
+                stepItems.forEach((item, index) => {
+                    const lineSegment = item.querySelector('.step-line-segment');
+                    const circle = item.querySelector('.step-circle');
+                    const circleWrapper = item.querySelector('.step-circle-wrapper');
+
+                    if (circle) circle.classList.remove('active', 'passed');
+                    // 테두리 색상을 '#e0e0e0'으로 초기화하여 항상 보이도록 함
+                    if (circleWrapper) circleWrapper.style.borderColor = '#e0e0e0';
+                    if (lineSegment) lineSegment.style.width = '0%';
+                });
+
+                // 순차적 애니메이션 적용 (앞으로 갈 때만 setTimeout 기반 애니메이션 적용)
+                stepItems.forEach((item, index) => {
+                    const lineSegment = item.querySelector('.step-line-segment');
+                    const circle = item.querySelector('.step-circle');
+                    const circleWrapper = item.querySelector('.step-circle-wrapper');
+
+                    // 1. 지나온 스텝 (index < currentActiveIndex) 처리
+                    if (index < currentActiveIndex) {
+                        if (circle) circle.classList.add('passed');
+                        if (circleWrapper) circleWrapper.style.borderColor = '#dc3545'; // 테두리도 채움
+                        if (lineSegment) lineSegment.style.width = '100%'; // 선도 100% 채움
+                    }
+
+                    // 2. 현재 스텝 (index === currentActiveIndex) 처리
+                    if (index === currentActiveIndex) {
+                        // 현재 원 활성화
+                        if (circle) {
+                            if (isMovingForward) {
+                                // 앞으로 갈 때는 딜레이를 주어 부드럽게 활성화
+                                setTimeout(() => {
+                                    circle.classList.add('active');
+                                    circleWrapper.style.borderColor = '#dc3545';
+                                }, index * 100); // 각 스텝마다 약간의 딜레이
+                            } else {
+                                // 뒤로 갈 때는 즉시 활성화 (트랜지션 없음)
+                                circle.classList.add('active');
+                                circleWrapper.style.borderColor = '#dc3545';
+                            }
+                        }
+
+                        // 현재 원에서 다음 선으로 나가는 부분 처리 (절반만 채움)
+                        if (lineSegment && currentActiveIndex < totalSlides - 1) {
+                            if (isMovingForward) {
+                                // 앞으로 갈 때는 딜레이를 주어 부드럽게 채움
+                                setTimeout(() => {
+                                    lineSegment.style.width = '50%';
+                                }, index * 100 + 150); // 원이 채워진 후 약간의 딜레이
+                            } else {
+                                // 뒤로 갈 때는 즉시 절반만 채움
+                                lineSegment.style.width = '50%';
+                            }
+                        }
+
+                        // 현재 원으로 들어오는 이전 선 처리 (항상 100% 채움)
+                        if (index > 0) {
+                            const prevItem = stepItems[index - 1];
+                            const prevLineSegment = prevItem.querySelector('.step-line-segment');
+                            if (prevLineSegment) {
+                                if (isMovingForward) {
+                                    // 앞으로 갈 때는 딜레이를 주어 부드럽게 채움
+                                    setTimeout(() => {
+                                        prevLineSegment.style.width = '100%';
+                                    }, (index - 1) * 100 + 50); // 이전 원이 채워진 후 딜레이
+                                } else {
+                                    // 뒤로 갈 때는 즉시 100% 채움
+                                    prevLineSegment.style.width = '100%';
+                                }
+                            }
+                        }
+                    }
+                });
+
+                // 트랜지션 복원 (뒤로 갈 때만) - DOM 업데이트 사이클을 위해 잠시 딜레이
+                if (!isMovingForward) {
+                    setTimeout(() => {
+                        paginationContainer.classList.remove('no-transition');
+                    }, 10); // 아주 짧은 딜레이 후 복원
+                }
+            }
+
+            // 초기 로드 시 초기 상태 저장 및 페이지네이션 업데이트
+            updatePagination(swiper.realIndex, swiper.realIndex);
+            lastActiveIndex = swiper.realIndex;
+        });
+    </script>
+</body>
+</html>

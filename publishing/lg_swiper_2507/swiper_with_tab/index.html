@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swiper 버튼 태그 Pagination 예제</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./swiper2.css">
+    <link rel="stylesheet" href="./tabs.css"> </head>
+<body>
+    <div class="tab-container">
+        <div class="tab-buttons">
+            <button class="tab-button active" data-tab="tab1">Swiper 1</button>
+            <button class="tab-button" data-tab="tab2">Swiper 2</button>
+            <button class="tab-button" data-tab="tab3">Swiper 3</button>
+        </div>
+
+        <div id="tab1" class="tab-content active">
+            <div class="wrap wrap-1">
+                <div class="my-swiper-pagination pagination-1">
+                    </div>
+                <div class="main-container-wrap">
+                    <div class="main-text-wrap text-wrap-1">
+                        <div class="text-inner">
+                            <p>제품별로 다양한 색상과 용량 선택이 가능해요</p>
+                            <p>3년부터 최대 6년까지 원하는 기간을 선택할 수 있어요</p>
+                            <p>다양한 혜택을 적용하여 더 합리적인 가격으로 구독해보세요</p>
+                            <p>계약자 정보를 등록하면 가전 구독이 완료됩니다</p>
+                        </div>
+                    </div>
+                    <div class="my-slide slide-1">
+                        <div class="swiper-container swiper-container-1">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" data-slide-text="가전 옵션 선택">
+                                    <div class="mo">
+                                        <span class="slide-num">1</span>
+                                        <h4>가전 옵션 선택</h4>
+                                        <p>제품별로 다양한 색상과 용량 선택이 가능해요</p>
+                                    </div>
+                                    <img src="./img/care-service-step-1.png" alt="가전 옵션 선택">
+                                </div>
+                                <div class="swiper-slide" data-slide-text="구독 기간 선택">
+                                    <div class="mo">
+                                        <span class="slide-num">2</span>
+                                        <h4>구독 기간 선택</h4>
+                                        <p>3년부터 최대 6년까지 원하는 기간을 선택할 수 있어요</p>
+                                    </div>
+                                    <img src="./img/care-service-step-2.png" alt="구독 기간 선택">
+                                </div>
+                                <div class="swiper-slide" data-slide-text="특별한 혜택 확인">
+                                    <div class="mo">
+                                        <span class="slide-num">3</span>
+                                        <h4>특별한 혜택 확인</h4>
+                                        <p>다양한 혜택을 적용하여 더 합리적인 가격으로 구독해보세요</p>
+                                    </div>
+                                    <img src="./img/care-service-step-3.png" alt="특별한 혜택 확인">
+                                </div>
+                                <div class="swiper-slide" data-slide-text="필요한 정보 등록">
+                                    <div class="mo">
+                                        <span class="slide-num">4</span>
+                                        <h4>필요한 정보 등록</h4>
+                                        <p>계약자 정보를 등록하면 가전 구독이 완료됩니다</p>
+                                    </div>
+                                    <img src="./img/care-service-step-4.png" alt="필요한 정보 등록">
+                                </div>
+                            </div>
+                            <div class="my-swiper-button-prev button-prev-1"></div>
+                            <div class="my-swiper-button-next button-next-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="wrap wrap-2">
+                <div class="my-swiper-pagination pagination-2">
+                    </div>
+                <div class="main-container-wrap">
+                    <div class="main-text-wrap text-wrap-2">
+                        <div class="text-inner">
+                            <p>두 번째 스와이퍼 - 첫 번째 슬라이드 텍스트</p>
+                            <p>두 번째 스와이퍼 - 두 번째 슬라이드 텍스트</p>
+                            <p>두 번째 스와이퍼 - 세 번째 슬라이드 텍스트</p>
+                            <p>두 번째 스와이퍼 - 네 번째 슬라이드 텍스트</p>
+                        </div>
+                    </div>
+                    <div class="my-slide slide-2">
+                        <div class="swiper-container swiper-container-2">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" data-slide-text="두 번째 - 1번 슬라이드">
+                                    <div class="mo">
+                                        <span class="slide-num">1</span>
+                                        <h4>두 번째 - 1번 제목</h4>
+                                        <p>두 번째 스와이퍼 - 첫 번째 슬라이드 내용</p>
+                                    </div>
+                                    <img src="./img/care-service-step-1.png" alt="두 번째 - 1번 슬라이드">
+                                </div>
+                                <div class="swiper-slide" data-slide-text="두 번째 - 2번 슬라이드">
+                                    <div class="mo">
+                                        <span class="slide-num">2</span>
+                                        <h4>두 번째 - 2번 제목</h4>
+                                        <p>두 번째 스와이퍼 - 두 번째 슬라이드 내용</p>
+                                    </div>
+                                    <img src="./img/care-service-step-2.png" alt="두 번째 - 2번 슬라이드">
+                                </div>
+                                <div class="swiper-slide" data-slide-text="두 번째 - 3번 슬라이드">
+                                    <div class="mo">
+                                        <span class="slide-num">3</span>
+                                        <h4>두 번째 - 3번 제목</h4>
+                                        <p>두 번째 스와이퍼 - 세 번째 슬라이드 내용</p>
+                                    </div>
+                                    <img src="./img/care-service-step-3.png" alt="두 번째 - 3번 슬라이드">
+                                </div>
+                                <div class="swiper-slide" data-slide-text="두 번째 - 4번 슬라이드">
+                                    <div class="mo">
+                                        <span class="slide-num">4</span>
+                                        <h4>두 번째 - 4번 제목</h4>
+                                        <p>두 번째 스와이퍼 - 네 번째 슬라이드 내용</p>
+                                    </div>
+                                    <img src="./img/care-service-step-4.png" alt="두 번째 - 4번 슬라이드">
+                                </div>
+                            </div>
+                            <div class="my-swiper-button-prev button-prev-2"></div>
+                            <div class="my-swiper-button-next button-next-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="wrap wrap-3">
+                <div class="my-swiper-pagination pagination-3">
+                    </div>
+                <div class="main-container-wrap">
+                    <div class="main-text-wrap text-wrap-3">
+                        <div class="text-inner">
+                            <p>세 번째 스와이퍼 - 첫 번째 슬라이드 텍스트</p>
+                            <p>세 번째 스와이퍼 - 두 번째 슬라이드 텍스트</p>
+                            <p>세 번째 스와이퍼 - 세 번째 슬라이드 텍스트</p>
+                            <p>세 번째 스와퍼 - 네 번째 슬라이드 텍스트</p>
+                        </div>
+                    </div>
+                    <div class="my-slide slide-3">
+                        <div class="swiper-container swiper-container-3">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" data-slide-text="세 번째 - 1번 슬라이드">
+                                    <div class="mo">
+                                        <span class="slide-num">1</span>
+                                        <h4>세 번째 - 1번 제목</h4>
+                                        <p>세 번째 스와이퍼 - 첫 번째 슬라이드 내용</p>
+                                    </div>
+                                    <img src="./img/care-service-step-1.png" alt="세 번째 - 1번 슬라이드">
+                                </div>
+                                <div class="swiper-slide" data-slide-text="세 번째 - 2번 슬라이드">
+                                    <div class="mo">
+                                        <span class="slide-num">2</span>
+                                        <h4>세 번째 - 2번 제목</h4>
+                                        <p>세 번째 스와이퍼 - 두 번째 슬라이드 내용</p>
+                                    </div>
+                                    <img src="./img/care-service-step-2.png" alt="세 번째 - 2번 슬라이드">
+                                </div>
+                                <div class="swiper-slide" data-slide-text="세 번째 - 3번 슬라이드">
+                                    <div class="mo">
+                                        <span class="slide-num">3</span>
+                                        <h4>세 번째 - 3번 제목</h4>
+                                        <p>세 번째 스와이퍼 - 세 번째 슬라이드 내용</p>
+                                    </div>
+                                    <img src="./img/care-service-step-3.png" alt="세 번째 - 3번 슬라이드">
+                                </div>
+                                <div class="swiper-slide" data-slide-text="세 번째 - 4번 슬라이드">
+                                    <div class="mo">
+                                        <span class="slide-num">4</span>
+                                        <h4>세 번째 - 4번 제목</h4>
+                                        <p>세 번째 스와이퍼 - 네 번째 슬라이드 내용</p>
+                                    </div>
+                                    <img src="./img/care-service-step-4.png" alt="세 번째 - 4번 슬라이드">
+                                </div>
+                            </div>
+                            <div class="my-swiper-button-prev button-prev-3"></div>
+                            <div class="my-swiper-button-next button-next-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="./swiper2.js"></script>
+    <script src="./tabs.js"></script> </body>
+</html>

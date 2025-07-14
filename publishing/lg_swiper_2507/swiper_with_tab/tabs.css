@@ -1,0 +1,51 @@
+/* 탭 컨테이너 스타일 */
+.tab-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+/* 탭 버튼 스타일 */
+.tab-buttons {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+    background-color: #f8f8f8;
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 8px 8px 0 0;
+    margin-right: 5px; /* 버튼 간 간격 */
+}
+
+.tab-button:hover {
+    background-color: #e0e0e0;
+}
+
+.tab-button.active {
+    background-color: #E21024; /* 활성화된 탭 배경색 */
+    color: #fff; /* 활성화된 탭 글자색 */
+    border-bottom: 3px solid #E21024; /* 활성화된 탭 하단 라인 */
+    position: relative;
+    z-index: 1; /* 활성화된 탭이 border-bottom 위로 오도록 */
+}
+
+/* 탭 콘텐츠 스타일 */
+.tab-content {
+    display: none; /* 기본적으로 모든 탭 콘텐츠 숨김 */
+    padding-top: 20px;
+}
+
+.tab-content.active {
+    display: block; /* 활성화된 탭 콘텐츠만 보여줌 */
+}

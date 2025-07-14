@@ -1,0 +1,420 @@
+@charset "utf-8";
+
+/* 공통 폰트 설정 */
+* {
+    font-family: 'Pretendard Variable', sans-serif;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    word-break: keep-all;
+}
+.mo {
+    display: none;
+}
+
+/* 레이아웃 */
+/* wrap-1, wrap-2, wrap-3에 공통 스타일 적용 */
+.wrap {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: 95%;
+    margin: 5% auto;
+    gap: 40px;
+    /* 각 스와이퍼 간의 여백을 주기 위해 추가 */
+    margin-bottom: 50px;
+}
+
+/* 개별 swiper-container-wrap에 대한 스타일 */
+.main-container-wrap {
+    background-color: #f6f6f6;
+    border-radius: 16px;
+    flex-shrink: 0;
+    flex-grow: 1;
+    height: 100%;
+    overflow: hidden;
+    padding: 80px 40px 0;
+    max-width: calc(75% - 20px);
+    position: relative;
+}
+
+/* 개별 pagination에 대한 스타일 */
+.my-swiper-pagination {
+    background-color: #f6f6f6;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 0 !important;
+    bottom: 0;
+    width: calc(25% - 20px) !important;
+    min-width: 300px !important;
+    z-index: 10;
+}
+
+/* 슬라이드 이미지 영역 */
+.swiper-container {
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+/* 개별 my-slide에 대한 스타일 */
+.main-container-wrap .my-slide {
+    border: 18px solid #3E3E3E;
+    border-bottom: 0;
+    border-radius: 32px 32px 0 0;
+    box-sizing: content-box;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 400px;
+}
+
+.swiper-wrapper img {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+.swiper-slide {
+    align-items: center;
+    display: flex;
+    font-size: 24px;
+    font-weight: bold;
+    justify-content: center;
+}
+
+/* 텍스트 슬라이드 - 개별 text-wrap에 변수 적용 */
+.main-text-wrap {
+    height: var(--slide-text-height);
+    margin-bottom: 40px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 각 스와이퍼의 텍스트 슬라이드에 적용될 변수를 위한 클래스 */
+/* JavaScript에서 각 text-wrap-{n}에 --current-slide-index-{n} 변수를 설정할 예정 */
+.text-inner {
+    display: flex;
+    flex-direction: column;
+    /* 초기값은 wrap-1에 대한 변수를 사용, JavaScript에서 각 wrap에 맞게 재정의 */
+    transform: translateY(calc(-1 * var(--slide-text-height) * (var(--current-slide-index-1, 1) - 1)));
+    transition: transform 0.3s ease-in-out;
+}
+.wrap-2 .text-inner {
+    transform: translateY(calc(-1 * var(--slide-text-height) * (var(--current-slide-index-2, 1) - 1)));
+}
+.wrap-3 .text-inner {
+    transform: translateY(calc(-1 * var(--slide-text-height) * (var(--current-slide-index-3, 1) - 1)));
+}
+
+
+.text-inner p {
+    font-size: 30px;
+    font-weight: 600;
+    height: var(--slide-text-height);
+    line-height: var(--slide-text-height);
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 페이지네이션 불릿 - 개별 pagination에 대한 가상 요소 */
+.my-swiper-pagination::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(100% + 20px);
+    border-style: solid;
+    border-width: 20px 20px 20px 0px;
+    border-color: transparent #F6F6F6 transparent transparent;
+    /* 초기값은 pagination-1에 대한 변수를 사용, JavaScript에서 각 pagination에 맞게 재정의 */
+    transform: translateY(calc(70px * var(--current-slide-index-1) + 10px * (var(--current-slide-index-1) - 1) - 35px - 20px));
+    transition: transform 0.3s ease-in-out;
+}
+.pagination-2::before {
+    transform: translateY(calc(70px * var(--current-slide-index-2) + 10px * (var(--current-slide-index-2) - 1) - 35px - 20px));
+}
+.pagination-3::before {
+    transform: translateY(calc(70px * var(--current-slide-index-3) + 10px * (var(--current-slide-index-3) - 1) - 35px - 20px));
+}
+
+.my-swiper-pagination::after {
+    background-color: #E21024;
+    border-radius: 10px;
+    content: "";
+    height: calc(var(--bullet-height) - 10px);
+    left: 0;
+    position: absolute;
+    top: 0;
+    /* 초기값은 pagination-1에 대한 변수를 사용, JavaScript에서 각 pagination에 맞게 재정의 */
+    transform: translateY(calc(var(--bullet-height) * (var(--current-slide-index-1, 1) - 1)));
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    z-index: -1;
+}
+.pagination-2::after {
+    transform: translateY(calc(var(--bullet-height) * (var(--current-slide-index-2, 1) - 1)));
+}
+.pagination-3::after {
+    transform: translateY(calc(var(--bullet-height) * (var(--current-slide-index-3, 1) - 1)));
+}
+
+
+.swiper-pagination-bullet {
+    background-color: transparent;
+    border-bottom: 10px solid white !important;
+    border-radius: 2px 2px 0 0;
+    display: block;
+    height: var(--bullet-height);
+    margin: 0 !important;
+    opacity: 1 !important;
+    overflow: hidden;
+    width: 100%;
+}
+
+.swiper-pagination-bullet div {
+    align-items: center;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    display: flex;
+    height: calc(var(--bullet-height) - 10px);
+    justify-content: flex-start;
+    margin: -2px;
+    text-align: center;
+    box-sizing:content-box;
+}
+
+.swiper-pagination-bullet-active div {
+    color: white;
+    transition: color 0.2s;
+}
+
+/* 불릿 내용 */
+.bullet-wrap {
+    color: #6a6a6a;
+    flex-shrink: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.bullet-wrap p {
+    padding: 0 24px;
+}
+
+.bullet-wrap span {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    width: var(--bullet-height);
+}
+
+/* 불릿 구분선 효과 */
+.swiper-pagination-bullet .bullet-wrap span::before {
+    background: linear-gradient(to bottom, #B5B5B5 5.5px, transparent 5.5px, transparent 11px);
+    background-position: 0 -1px;
+    background-size: 100% 11px;
+    content: "";
+    height: 100%;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 0.3s;
+    width: 1px;
+}
+
+.swiper-pagination-bullet .bullet-wrap span::after {
+    background: linear-gradient(to bottom, #ffffff 5.5px, transparent 5.5px, transparent 11px);
+    background-position: 0 -1px;
+    background-size: 100% 11px;
+    content: "";
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 0.3s;
+    width: 1px;
+}
+
+.swiper-pagination-bullet-active .bullet-wrap span::before {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.swiper-pagination-bullet-active .bullet-wrap span::after {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+/* 네비게이션 버튼 - 개별 버튼에 대한 스타일 */
+.my-swiper-button-prev,
+.my-swiper-button-next {
+    position: absolute;
+    top: 50%;
+    width: 32px;
+    height: 46px;
+    transform: translateY(-50%);
+    z-index: 10;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 8px;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity .3s;
+}
+.button-prev-1, .button-prev-2, .button-prev-3 {
+    left: min(8%, 80px);
+}
+.button-next-1, .button-next-2, .button-next-3 {
+    right: min(8%, 80px);
+}
+
+/* 가상 요소도 각 버튼에 맞게 적용 */
+.my-swiper-button-prev::after, .my-swiper-button-next::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #424242;
+    border-right: 2px solid #424242;
+}
+.my-swiper-button-prev::after {
+    content: "";
+    font-size: 0;
+    transform: translate(-25%, -50%) rotate(-135deg);
+}
+.my-swiper-button-next::after {
+    content: "";
+    font-size: 0;
+    transform: translate(-75%, -50%) rotate(45deg);
+}
+
+/* 미디어 쿼리 */
+@media (max-width: 1180px) {
+    .wrap {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    /* 모든 스와이퍼의 pagination과 container-wrap에 적용 */
+    .my-swiper-pagination,
+    .main-container-wrap {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 870px) {
+    .mo {
+        display: block;
+    }
+    .wrap {
+        gap: 20px;
+    }
+
+    /* 모바일에서 모든 pagination에 적용 */
+    .my-swiper-pagination {
+        order: 2;
+        flex-direction: row;
+        gap: 8px;
+        background-color: transparent;
+        justify-content: center;
+    }
+    .my-swiper-pagination::before,
+    .my-swiper-pagination::after {
+        content: none;
+    }
+    .my-swiper-pagination .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #E8E8E8;
+        cursor: pointer;
+        border: none !important;
+    }
+    .my-swiper-pagination .swiper-pagination-bullet-active {
+        background-color: #000;
+    }
+    .my-swiper-pagination .swiper-pagination-bullet * {
+        display: none;
+    }
+    .main-container-wrap {
+        padding: 34px 36px 0;
+    }
+    .main-container-wrap .main-text-wrap {
+        display: none;
+    }
+    .main-container-wrap .my-slide {
+        border: none;
+        border-radius: 0;
+        width: auto;
+    }
+    .my-slide .swiper-slide {
+        flex-direction: column;
+    }
+    .my-slide .swiper-slide .mo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 218px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .my-slide .swiper-slide .mo .slide-num {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        background-color: #E21024;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+    }
+    .my-slide .swiper-slide .mo h4 {
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 4px;
+        font-weight: 600;
+    }
+    .my-slide .swiper-slide .mo p {
+        font-size: 14px;
+        line-height: 20px;
+        color: #6f6f6f;
+        font-weight: 300;
+    }
+    .my-slide .swiper-slide img {
+        width: 260px;
+        height: 321px;
+        border: 11px solid #3E3E3E;
+        border-bottom: none;
+        border-radius: 32px 32px 0 0;
+        object-fit: cover;
+        object-position: top;
+    }
+    /* 모바일에서 네비게이션 버튼 위치 조정 - 모든 버튼에 적용 */
+    .my-swiper-button-next {
+        margin-top: 0;
+        top: 76px;
+        right: auto;
+        left: calc(50% + 128px);
+    }
+    .my-swiper-button-prev {
+        margin-top: 0;
+        top: 76px;
+        left: auto;
+        right: calc(50% + 128px);
+    }
+}
